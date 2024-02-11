@@ -1,0 +1,49 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "amount": 420,
+            "year": 1,
+            "month": "February",
+            "category": 1,
+            "subCategory": 1
+        },
+        {
+            "id": 2,
+            "amount": 420,
+            "year": 1,
+            "month": "February",
+            "category": 1,
+            "subCategory": 2
+        }
+    ],
+    "years": [
+        {
+            "id": 1,
+            "value": "2023"
+        },
+        {
+            "id": 2,
+            "value": "2024"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "something",
+            "subCategories": [1 ,2]
+        }
+    ],
+    "subCategories": [
+        {
+            "id": 1,
+            "name": "otherthing",
+            "parentCategory": 1
+        },
+        {
+            "id": 2,
+            "name": "otherthings",
+            "parentCategory": 1
+        }
+    ]
+}
