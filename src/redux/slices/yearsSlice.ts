@@ -15,7 +15,7 @@ export const yearsSlice = createSlice({
   },
 });
 
-export const {} = yearsSlice.actions;
+//export const {} = yearsSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 //export const selectCount = (state: RootState) => state.year.value

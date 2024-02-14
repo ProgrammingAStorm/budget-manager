@@ -6,9 +6,8 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { months } from "../../../models/month";
 
-export default function MonthSelector() {
+export default function MonthSelector({ months }: { months: string[] }) {
   const currentYear = useParams().year;
   const navigate = useNavigate();
 
