@@ -5,26 +5,26 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useAppSelector } from "../redux/hooks";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { months } from "../../../models/month";
 
-export default function YearSelector() {
-  const years = useAppSelector(({ years }) => years);
+export default function MonthSelector() {
+  const currentYear = useParams().year;
   const navigate = useNavigate();
 
   function handleChange({ target: { value } }: SelectChangeEvent) {
-    navigate(`/${value}`);
+    navigate(`/${currentYear}/${value}`);
   }
 
   return (
     <>
-      {years && years.length > 0 && (
+      {months && months.length > 0 && (
         <FormControl sx={{ display: "flex", width: "50%" }}>
-          <InputLabel>Year</InputLabel>
-          <Select label="year" onChange={handleChange}>
-            {years.map(({ id, value }) => {
+          <InputLabel>Month</InputLabel>
+          <Select label="month" onChange={handleChange}>
+            {months.map((value, index) => {
               return (
-                <MenuItem key={id} value={value}>
+                <MenuItem key={index} value={value}>
                   {value}
                 </MenuItem>
               );
