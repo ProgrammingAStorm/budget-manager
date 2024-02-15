@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <>
       <Box>
-        <AppBar component="header" position="static" sx={{ minHeight: "85px" }}>
+        <AppBar component="header" position="static">
           <Box component={"nav"}>
             <Stack>
               <YearSelector />

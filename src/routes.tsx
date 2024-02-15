@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
 import YearPage from "./pages/YearPage/YearPage";
-import MonthByYear from "./components/MonthsByYear";
+import MonthByYear from "./pages/MonthsByYear/MonthsByYear";
 
 const router = createBrowserRouter([
   {

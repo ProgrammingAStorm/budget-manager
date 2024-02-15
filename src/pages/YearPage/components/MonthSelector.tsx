@@ -12,7 +12,7 @@ export default function MonthSelector({ months }: { months: string[] }) {
   const navigate = useNavigate();
 
   function handleChange({ target: { value } }: SelectChangeEvent) {
-    navigate(`/${currentYear}/${value}`);
+    
   }
 
   return (
@@ -23,7 +23,7 @@ export default function MonthSelector({ months }: { months: string[] }) {
           <Select label="month" onChange={handleChange} value={months[0]}>
             {months.map((value, index) => {
               return (
-                <MenuItem key={index} value={value}>
+                <MenuItem key={index} value={value} onClick={() => navigate(`/${currentYear}/${value}`)}>
                   {value}
                 </MenuItem>
               );
