@@ -1,6 +1,7 @@
 import Category from "../../../models/category";
 import Transaction from "../../../models/transaction";
 import { useAppSelector } from "../../../redux/hooks";
+import { Transaction as TransactionComponent } from "./Transaction";
 
 export interface CategoryProps {
   category: Category;
@@ -14,7 +15,9 @@ export default function Category({ category }: CategoryProps) {
     <div>
       <div>{category.name}</div>
 
-      {}
+      {transactionByCategory.map((transaction) => (
+        <TransactionComponent transaction={transaction} />
+      ))}
     </div>
   );
 
