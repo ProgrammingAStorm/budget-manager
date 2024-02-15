@@ -13,7 +13,7 @@ function App() {
     dispatch(fetchYears());
     dispatch(fetchCategories());
     dispatch(fetchSubCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
