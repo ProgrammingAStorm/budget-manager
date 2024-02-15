@@ -4,9 +4,7 @@ import Transaction from "../../models/transaction";
 import { useAppSelector } from "../../redux/hooks";
 
 export default function YearPage() {
-  const months = useAppSelector(({ transactions }) =>
-    getMonthsFromTransactions(transactions)
-  );
+  const months = getMonthsFromTransactions(useAppSelector((s) => s.transactions));
 
   function getMonthsFromTransactions(transactions: Transaction[]) {
     return transactions

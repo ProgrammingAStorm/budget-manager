@@ -23,12 +23,12 @@ export default function YearSelector() {
       {years && years.length > 0 && (
         <FormControl sx={{ display: "flex" }}>
           <InputLabel>Year</InputLabel>
-          <Select label="year" onChange={handleChange}>
+          <Select label="year" onChange={handleChange} value={years[0].value}>
             {years.map(({ id, value }) => {
               return (
                 <MenuItem
                   key={id}
-                  value={id}
+                  value={value}
                   onClick={() => dispatch(fetchTransactionsByYear(id))}
                 >
                   {value}

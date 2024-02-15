@@ -20,7 +20,7 @@ export default function MonthSelector({ months }: { months: string[] }) {
       {months && months.length > 0 && (
         <FormControl sx={{ display: "flex", width: "50%" }}>
           <InputLabel>Month</InputLabel>
-          <Select label="month" onChange={handleChange}>
+          <Select label="month" onChange={handleChange} value={months[0]}>
             {months.map((value, index) => {
               return (
                 <MenuItem key={index} value={value}>
