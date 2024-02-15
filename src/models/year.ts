@@ -1,4 +1,4 @@
 export default interface Year {
-  id: number;
+  id: string;
   value: string;
 }

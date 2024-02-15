@@ -1,12 +1,9 @@
-import Category from "./category";
-import SubCategory from "./subCategory";
-
 export default interface Transaction {
   id: string;
   name?: string;
   amount: number;
-  year: number;
+  year: string;
   month: string;
-  category: number;
-  subCategory: SubCategory;
+  category: string;
+  subCategory: string;
 }
