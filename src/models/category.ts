@@ -1,5 +1,5 @@
 export default interface Category {
-    id: number,
-    name: string,
-    subCategories: number[]
+  id: number;
+  name: string;
+  subCategories: number[];
 }

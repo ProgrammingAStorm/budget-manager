@@ -7,6 +7,6 @@ export default interface Transaction {
   amount: number;
   year: number;
   month: string;
-  category: Category;
+  category: number;
   subCategory: SubCategory;
 }

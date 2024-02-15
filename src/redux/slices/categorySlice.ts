@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import category from "../../models/category";
 import { fetchCategories } from "../thunks/categoryThunks";
+import Category from "../../models/category";
 
 // Define the initial state using that type
-const initialState: category[] = [];
+const initialState: Category[] = [];
 
 export const categoriesSlice = createSlice({
   name: "categories",
