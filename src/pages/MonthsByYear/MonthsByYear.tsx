@@ -28,10 +28,6 @@ export default function MonthByYear() {
               }
             />
           ))}
-
-          {/* {transactionsByMonthByYear.map(({ id, amount }) => {
-            return <div key={id}>{amount}</div>;
-          })} */}
         </>
       )}
     </>
