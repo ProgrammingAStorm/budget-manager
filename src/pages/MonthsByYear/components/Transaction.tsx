@@ -1,4 +1,4 @@
-import Transaction from "../../../models/transaction";
+import type Transaction from "../../../models/transaction";
 
 export interface TransactionProps {
   transaction: Transaction;

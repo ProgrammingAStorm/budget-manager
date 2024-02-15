@@ -4,7 +4,7 @@ import { useAppSelector } from "../../../redux/hooks";
 import { Transaction as TransactionComponent } from "./Transaction";
 
 export interface SubCategoryProps {
-  subCategoryId: number;
+  subCategoryId: string;
 }
 
 export default function SubCategory({ subCategoryId }: SubCategoryProps) {
