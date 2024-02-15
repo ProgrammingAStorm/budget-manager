@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import yearsReducer from "./slices/yearsSlice";
 import transactionsReducer from "./slices/transactionsSlice";
 import categoryReducer from "./slices/categorySlice";
+import subCategoryReducer from "./slices/subCategorySlice";
 
 export const store = configureStore({
   reducer: {
     years: yearsReducer,
     transactions: transactionsReducer,
     categories: categoryReducer,
+    subCategories: subCategoryReducer,
   },
 });
 

@@ -4,6 +4,7 @@ import { fetchYears } from "./redux/thunks/yearThunks";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 import { fetchCategories } from "./redux/thunks/categoryThunks";
+import { fetchSubCategories } from "./redux/thunks/subCategoryThunks";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -11,6 +12,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchYears());
     dispatch(fetchCategories());
+    dispatch(fetchSubCategories());
   }, []);
 
   return (
