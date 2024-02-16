@@ -11,6 +11,7 @@ export default function Details({ transactionsByMonthByYear }: DetailsProps) {
     <>
       Total Withdrawls: {totalWithdrawls}
       Total Deposits: {totalDeposits}
+      <div className="text-xl"> asd</div>
     </>
   );
 
