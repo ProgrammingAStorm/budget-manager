@@ -7,4 +7,19 @@ const fetchYears = createAsyncThunk<Year[]>("years/fetchYears", async () => {
   return await response.json();
 });
 
-export { fetchYears };
+const postYear = createAsyncThunk(
+  "years/postYears",
+  async (year: string, thunkApi) => {
+    await fetch("http://localhost:3000/years", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ value: year }),
+    });
+
+    thunkApi.dispatch(fetchYears());
+  }
+);
+
+export { fetchYears, postYear };

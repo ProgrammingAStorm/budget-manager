@@ -21,21 +21,24 @@
       "year": "1",
       "month": "February",
       "category": "1",
-      "subCategory": "1"
+      "subCategory": "1",
+      "id": "4458"
     },
     {
       "amount": -420,
       "year": "1",
       "month": "February",
       "category": "1",
-      "subCategory": "2"
+      "subCategory": "2",
+      "id": "4b82"
     },
     {
       "amount": 420,
       "year": "1",
       "month": "February",
       "category": "1",
-      "subCategory": "2"
+      "subCategory": "2",
+      "id": "bb49"
     }
   ],
   "years": [
@@ -46,13 +49,24 @@
     {
       "id": "2",
       "value": "2024"
+    },
+    {
+      "id": "436e",
+      "value": "1234"
+    },
+    {
+      "id": "7404",
+      "value": "4253"
     }
   ],
   "categories": [
     {
       "id": "1",
       "name": "something",
-      "subCategories": ["1", "2"]
+      "subCategories": [
+        "1",
+        "2"
+      ]
     }
   ],
   "subCategories": [

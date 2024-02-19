@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 export interface ModalState {
   open: boolean;
-  component: ReactNode | null;
+  component: string | null;
 }
 
 const initialState: ModalState = {

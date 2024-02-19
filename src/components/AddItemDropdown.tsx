@@ -30,9 +30,7 @@ export default function AddItemDropdown() {
           <MenuItem
             onClick={() => {
               handleClose();
-              dispatch(
-                setModal({ open: true, component: <AddYearComponent /> })
-              );
+              dispatch(setModal({ open: true, component: "year" }));
             }}
           >
             Year

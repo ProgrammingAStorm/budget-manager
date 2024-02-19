@@ -1,10 +1,21 @@
 import { Modal, Paper } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setModal } from "../redux/slices/modalSlice";
+import AddYearComponent from "./AddYearComponent";
 
 export default function DynamicModal() {
   const { open, component } = useAppSelector((s) => s.modal);
   const dispatch = useAppDispatch();
+
+  function pickElement() {
+    switch (component) {
+      case "year":
+        return <AddYearComponent />;
+
+      default:
+        return <div></div>;
+    }
+  }
 
   return (
     <Modal
@@ -19,7 +30,7 @@ export default function DynamicModal() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        {component}
+        {pickElement()}
       </Paper>
     </Modal>
   );
