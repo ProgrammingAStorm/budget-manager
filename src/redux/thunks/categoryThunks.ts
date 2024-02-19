@@ -30,7 +30,6 @@ const putSubCategoryIntoCategory = createAsyncThunk(
     { parentCategory, id }: { parentCategory: string; id: string },
     { dispatch, getState }
   ) => {
-    debugger;
     const { categories } = getState() as RootState;
     const category = categories.find((c) => c.id === parentCategory)!;
 

@@ -67,12 +67,11 @@
     {
       "id": "1",
       "name": "something",
-      "subCategories": ["1", "2"]
-    },
-    {
-      "id": "554d",
-      "name": "Bruh",
-      "subCategories": ["b60e"]
+      "subCategories": [
+        "1",
+        "2",
+        "3141"
+      ]
     }
   ],
   "subCategories": [
@@ -85,6 +84,11 @@
       "id": "2",
       "name": "otherthings",
       "parentCategory": "1"
+    },
+    {
+      "id": "3141",
+      "parentCategory": "1",
+      "name": "laskdj"
     }
   ]
 }
