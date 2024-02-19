@@ -67,15 +67,12 @@
     {
       "id": "1",
       "name": "something",
-      "subCategories": [
-        "1",
-        "2"
-      ]
+      "subCategories": ["1", "2"]
     },
     {
       "id": "554d",
       "name": "Bruh",
-      "subCategories": []
+      "subCategories": ["b60e"]
     }
   ],
   "subCategories": [

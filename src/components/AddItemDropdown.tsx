@@ -43,6 +43,14 @@ export default function AddItemDropdown() {
           >
             Category
           </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              dispatch(setModal({ open: true, component: "subCategory" }));
+            }}
+          >
+            SubCategory
+          </MenuItem>
         </Menu>
       </div>
     </>

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import Category from "../../models/category";
+import { RootState } from "../store";
 
 const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
@@ -24,4 +24,29 @@ const postCategory = createAsyncThunk(
   }
 );
 
-export { fetchCategories, postCategory };
+const putSubCategoryIntoCategory = createAsyncThunk(
+  "categories/putSubCategoryIntoCategory",
+  async (
+    { parentCategory, id }: { parentCategory: string; id: string },
+    { dispatch, getState }
+  ) => {
+    debugger;
+    const { categories } = getState() as RootState;
+    const category = categories.find((c) => c.id === parentCategory)!;
+
+    await fetch(`http://localhost:3000/categories/${parentCategory}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        ...category,
+        subCategories: [...category.subCategories, id],
+      }),
+    });
+
+    dispatch(fetchCategories());
+  }
+);
+
+export { fetchCategories, postCategory, putSubCategoryIntoCategory };
