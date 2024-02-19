@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Year from "../../models/year";
-import { fetchYears, postYear } from "../thunks/yearThunks";
+import { fetchYears } from "../thunks/yearThunks";
 
 // Define the initial state using that type
 const initialState: Year[] = [];
@@ -12,7 +12,6 @@ export const yearsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchYears.fulfilled, (_, { payload }) => payload);
-    builder.addCase(postYear.fulfilled, () => {});
   },
 });
 

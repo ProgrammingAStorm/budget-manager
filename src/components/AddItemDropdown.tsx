@@ -35,6 +35,14 @@ export default function AddItemDropdown() {
           >
             Year
           </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              dispatch(setModal({ open: true, component: "category" }));
+            }}
+          >
+            Category
+          </MenuItem>
         </Menu>
       </div>
     </>

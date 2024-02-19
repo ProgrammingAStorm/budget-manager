@@ -2,6 +2,7 @@ import { Modal, Paper } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setModal } from "../redux/slices/modalSlice";
 import AddYearComponent from "./AddYearComponent";
+import AddCategoryComponent from "./AddCategoryComponent";
 
 export default function DynamicModal() {
   const { open, component } = useAppSelector((s) => s.modal);
@@ -11,6 +12,9 @@ export default function DynamicModal() {
     switch (component) {
       case "year":
         return <AddYearComponent />;
+
+      case "category":
+        return <AddCategoryComponent />;
 
       default:
         return <div></div>;
