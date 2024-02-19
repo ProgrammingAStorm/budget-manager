@@ -1,9 +1,13 @@
-import { Button, Menu, MenuItem, Typography } from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
+import { useAppDispatch } from "../redux/hooks";
+import { setModal } from "../redux/slices/modalSlice";
+import AddYearComponent from "./AddYearComponent";
 
 export default function AddItemDropdown() {
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const open = Boolean(anchor);
+  const dispatch = useAppDispatch();
 
   function handleClose() {
     setAnchor(null);
@@ -15,24 +19,24 @@ export default function AddItemDropdown() {
         <Button
           endIcon="+"
           onClick={(e) => setAnchor(e.target as HTMLElement)}
-          id="basic-button"
           variant="contained"
-          //   aria-controls={`${open ? "basic-menu" : ""}`}
-          //   aria-expanded={`${open ? "true" : ""}`}
-          //   aria-haspopup="true"
-        >
-          <Typography>Add</Typography>
-        </Button>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchor}
-          open={open}
-          onClick={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
+          sx={{
+            textTransform: "none",
           }}
         >
-          <MenuItem onClick={handleClose}>Bruh</MenuItem>
+          Add...
+        </Button>
+        <Menu anchorEl={anchor} open={open} onClick={handleClose}>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              dispatch(
+                setModal({ open: true, component: <AddYearComponent /> })
+              );
+            }}
+          >
+            Year
+          </MenuItem>
         </Menu>
       </div>
     </>
