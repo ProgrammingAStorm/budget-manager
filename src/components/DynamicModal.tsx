@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setModal } from "../redux/slices/modalSlice";
 import AddYearComponent from "./AddYearComponent";
 import AddCategoryComponent from "./AddCategoryComponent";
+import AddTransactionComponent from "./AddTransactionComponent";
 import AddSubCategoryComponent from "./AddSubCategoryComponent";
 
 export default function DynamicModal() {
@@ -19,6 +20,9 @@ export default function DynamicModal() {
 
       case "subCategory":
         return <AddSubCategoryComponent />;
+
+      case "transaction":
+        return <AddTransactionComponent />;
 
       default:
         return <div></div>;

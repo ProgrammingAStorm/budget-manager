@@ -1,6 +1,6 @@
 import { AppBar, Box, Stack } from "@mui/material";
 import YearSelector from "./YearSelector";
-import AddItemDropdown from "./AddItemDropdown";
+import AddItemMenu from "./AddItemMenu";
 
 export default function Header() {
   return (
@@ -10,7 +10,7 @@ export default function Header() {
           <Box component={"nav"}>
             <YearSelector />
 
-            <AddItemDropdown />
+            <AddItemMenu />
           </Box>
         </AppBar>
       </Box>

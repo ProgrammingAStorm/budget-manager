@@ -1,5 +1,5 @@
 export default interface SubCategory {
-  id: string | null;
+  id: string;
   name: string;
   parentCategory: string;
 }

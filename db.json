@@ -39,6 +39,15 @@
       "category": "1",
       "subCategory": "2",
       "id": "bb49"
+    },
+    {
+      "id": "7855",
+      "amount": 123,
+      "category": "2cfb",
+      "month": "July",
+      "name": "asd",
+      "subCategory": "db3b",
+      "year": "2"
     }
   ],
   "years": [
@@ -72,6 +81,13 @@
         "2",
         "3141"
       ]
+    },
+    {
+      "id": "2cfb",
+      "name": "Utility",
+      "subCategories": [
+        "db3b"
+      ]
     }
   ],
   "subCategories": [
@@ -89,6 +105,11 @@
       "id": "3141",
       "parentCategory": "1",
       "name": "laskdj"
+    },
+    {
+      "id": "db3b",
+      "parentCategory": "2cfb",
+      "name": "Heating"
     }
   ]
 }

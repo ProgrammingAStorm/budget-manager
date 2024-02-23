@@ -2,9 +2,8 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { useAppDispatch } from "../redux/hooks";
 import { setModal } from "../redux/slices/modalSlice";
-import AddYearComponent from "./AddYearComponent";
 
-export default function AddItemDropdown() {
+export default function AddItemMenu() {
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const open = Boolean(anchor);
   const dispatch = useAppDispatch();
@@ -35,6 +34,7 @@ export default function AddItemDropdown() {
           >
             Year
           </MenuItem>
+
           <MenuItem
             onClick={() => {
               handleClose();
@@ -43,6 +43,7 @@ export default function AddItemDropdown() {
           >
             Category
           </MenuItem>
+
           <MenuItem
             onClick={() => {
               handleClose();
@@ -50,6 +51,15 @@ export default function AddItemDropdown() {
             }}
           >
             SubCategory
+          </MenuItem>
+
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              dispatch(setModal({ open: true, component: "transaction" }));
+            }}
+          >
+            Transaction
           </MenuItem>
         </Menu>
       </div>
