@@ -1,19 +1,27 @@
-import { AppBar, Box, Stack } from "@mui/material";
-import YearSelector from "./YearSelector";
+import { AppBar, Box, IconButton, Stack } from "@mui/material";
 import AddItemMenu from "./AddItemMenu";
+import NavigationDrawer from "./NavigationDrawer";
+import { Home } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
+
   return (
     <>
-      <Box>
-        <AppBar component="header" position="static">
-          <Box component={"nav"}>
-            <YearSelector />
+      <AppBar component="header" position="static">
+        <Stack direction={"row"} justifyContent={"space-between"}>
+          <IconButton onClick={() => navigate("/")}>
+            <Home />
+          </IconButton>
 
+          <Box>
             <AddItemMenu />
+
+            <NavigationDrawer />
           </Box>
-        </AppBar>
-      </Box>
+        </Stack>
+      </AppBar>
     </>
   );
 }

@@ -1,4 +1,5 @@
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Button, Menu, MenuItem, IconButton } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
 import { useAppDispatch } from "../redux/hooks";
 import { setModal } from "../redux/slices/modalSlice";
@@ -14,55 +15,51 @@ export default function AddItemMenu() {
 
   return (
     <>
-      <div>
-        <Button
-          endIcon="+"
-          onClick={(e) => setAnchor(e.target as HTMLElement)}
-          variant="contained"
-          sx={{
-            textTransform: "none",
+      <IconButton
+        onClick={(e) => setAnchor(e.target as HTMLElement)}
+        sx={{
+          textTransform: "none",
+        }}
+      >
+        <AddIcon />
+      </IconButton>
+      <Menu anchorEl={anchor} open={open} onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            dispatch(setModal({ open: true, component: "year" }));
           }}
         >
-          Add...
-        </Button>
-        <Menu anchorEl={anchor} open={open} onClick={handleClose}>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              dispatch(setModal({ open: true, component: "year" }));
-            }}
-          >
-            Year
-          </MenuItem>
+          Year
+        </MenuItem>
 
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              dispatch(setModal({ open: true, component: "category" }));
-            }}
-          >
-            Category
-          </MenuItem>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            dispatch(setModal({ open: true, component: "category" }));
+          }}
+        >
+          Category
+        </MenuItem>
 
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              dispatch(setModal({ open: true, component: "subCategory" }));
-            }}
-          >
-            SubCategory
-          </MenuItem>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            dispatch(setModal({ open: true, component: "subCategory" }));
+          }}
+        >
+          SubCategory
+        </MenuItem>
 
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              dispatch(setModal({ open: true, component: "transaction" }));
-            }}
-          >
-            Transaction
-          </MenuItem>
-        </Menu>
-      </div>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            dispatch(setModal({ open: true, component: "transaction" }));
+          }}
+        >
+          Transaction
+        </MenuItem>
+      </Menu>
     </>
   );
 }

@@ -1,115 +1,15 @@
 {
-  "transactions": [
-    {
-      "id": "1",
-      "amount": 420,
-      "year": "1",
-      "month": "February",
-      "category": "1",
-      "subCategory": "1"
-    },
-    {
-      "id": "2",
-      "amount": 420,
-      "year": "1",
-      "month": "February",
-      "category": "1",
-      "subCategory": "2"
-    },
-    {
-      "amount": -420,
-      "year": "1",
-      "month": "February",
-      "category": "1",
-      "subCategory": "1",
-      "id": "4458"
-    },
-    {
-      "amount": -420,
-      "year": "1",
-      "month": "February",
-      "category": "1",
-      "subCategory": "2",
-      "id": "4b82"
-    },
-    {
-      "amount": 420,
-      "year": "1",
-      "month": "February",
-      "category": "1",
-      "subCategory": "2",
-      "id": "bb49"
-    },
-    {
-      "id": "7855",
-      "amount": 123,
-      "category": "2cfb",
-      "month": "July",
-      "name": "asd",
-      "subCategory": "db3b",
-      "year": "2"
-    }
-  ],
+  "transactions": [],
   "years": [
     {
-      "id": "1",
+      "id": "d1f0",
       "value": "2023"
     },
     {
-      "id": "2",
+      "id": "9cd8",
       "value": "2024"
-    },
-    {
-      "id": "436e",
-      "value": "1234"
-    },
-    {
-      "id": "7404",
-      "value": "4253"
-    },
-    {
-      "id": "f9e4",
-      "value": "667"
     }
   ],
-  "categories": [
-    {
-      "id": "1",
-      "name": "something",
-      "subCategories": [
-        "1",
-        "2",
-        "3141"
-      ]
-    },
-    {
-      "id": "2cfb",
-      "name": "Utility",
-      "subCategories": [
-        "db3b"
-      ]
-    }
-  ],
-  "subCategories": [
-    {
-      "id": "1",
-      "name": "otherthing",
-      "parentCategory": "1"
-    },
-    {
-      "id": "2",
-      "name": "otherthings",
-      "parentCategory": "1"
-    },
-    {
-      "id": "3141",
-      "parentCategory": "1",
-      "name": "laskdj"
-    },
-    {
-      "id": "db3b",
-      "parentCategory": "2cfb",
-      "name": "Heating"
-    }
-  ]
+  "categories": [],
+  "subCategories": []
 }
