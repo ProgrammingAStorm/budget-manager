@@ -33,5 +33,6 @@
       "parentCategory": "5f94",
       "name": "Heating"
     }
-  ]
+  ],
+  "budgets": [{ "id": "1", "totalIncome": 0, "divisions": [] }]
 }

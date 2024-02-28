@@ -1,4 +1,10 @@
-import { Button, Menu, MenuItem, IconButton } from "@mui/material";
+import {
+  Menu,
+  MenuItem,
+  IconButton,
+  ListSubheader,
+  Typography,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
 import { useAppDispatch } from "../redux/hooks";
@@ -24,6 +30,11 @@ export default function AddItemMenu() {
         <AddIcon />
       </IconButton>
       <Menu anchorEl={anchor} open={open} onClick={handleClose}>
+        <ListSubheader>
+          <Typography sx={{ textDecoration: "underline" }}>
+            Transaction
+          </Typography>
+        </ListSubheader>
         <MenuItem
           onClick={() => {
             handleClose();
@@ -58,6 +69,18 @@ export default function AddItemMenu() {
           }}
         >
           Transaction
+        </MenuItem>
+
+        <ListSubheader>
+          <Typography sx={{ textDecoration: "underline" }}>Budget</Typography>
+        </ListSubheader>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            dispatch(setModal({ open: true, component: "budget" }));
+          }}
+        >
+          Budget
         </MenuItem>
       </Menu>
     </>
