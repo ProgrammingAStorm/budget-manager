@@ -7,7 +7,10 @@ export default function Layout() {
     <>
       <Header />
       <DynamicModal />
-      <Outlet />
+
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }

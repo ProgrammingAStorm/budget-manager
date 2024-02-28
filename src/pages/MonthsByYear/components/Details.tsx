@@ -1,17 +1,14 @@
-import Transaction from "../../../models/transaction";
-
 export interface DetailsProps {
-  transactionsByMonthByYear: number[];
+  transactions: number[];
 }
 
-export default function Details({ transactionsByMonthByYear }: DetailsProps) {
-  const [totalWithdrawls, totalDeposits] = getTotals(transactionsByMonthByYear);
+export default function Details({ transactions }: DetailsProps) {
+  const [totalWithdrawls, totalDeposits] = getTotals(transactions);
 
   return (
     <>
       Total Withdrawls: {totalWithdrawls}
       Total Deposits: {totalDeposits}
-      <div className="text-xl"> asd</div>
     </>
   );
 

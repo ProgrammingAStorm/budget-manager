@@ -23,9 +23,7 @@ export default function MonthByYear() {
     <>
       {transactionsByMonthByYear && transactionsByMonthByYear.length > 0 && (
         <>
-          <Details
-            transactionsByMonthByYear={actualTransactionsByMonthByYear}
-          />
+          <Details transactions={actualTransactionsByMonthByYear} />
           {categoriesInMonth.map((categoryId) => (
             <Category
               key={categoryId}

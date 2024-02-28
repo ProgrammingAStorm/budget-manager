@@ -2,9 +2,14 @@ import { Outlet } from "react-router-dom";
 import MonthSelector from "./components/MonthSelector";
 import Transaction from "../../models/transaction";
 import { useAppSelector } from "../../redux/hooks";
+import { useState } from "react";
 
 export default function YearPage() {
-  const months = getMonthsFromTransactions(useAppSelector((s) => s.transactions));
+  const [isMonthSelected, setIsMonthSelected] = useState(false);
+
+  const months = getMonthsFromTransactions(
+    useAppSelector((s) => s.transactions)
+  );
 
   function getMonthsFromTransactions(transactions: Transaction[]) {
     return transactions
@@ -13,10 +18,15 @@ export default function YearPage() {
   }
 
   return (
-    <main>
-      <MonthSelector months={months} />
+    <>
+      {!isMonthSelected && (
+        <MonthSelector
+          months={months}
+          setIsMonthSelected={setIsMonthSelected}
+        />
+      )}
 
       <Outlet />
-    </main>
+    </>
   );
 }

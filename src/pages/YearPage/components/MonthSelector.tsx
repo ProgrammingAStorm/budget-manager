@@ -1,4 +1,5 @@
 import {
+  Box,
   FormControl,
   InputLabel,
   MenuItem,
@@ -6,30 +7,45 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
+import Month from "../../../models/month";
+import MonthDisplay from "./MonthDisplay";
 
-export default function MonthSelector({ months }: { months: string[] }) {
+export default function MonthSelector({
+  months,
+  setIsMonthSelected,
+}: {
+  months: string[];
+  setIsMonthSelected: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const currentYear = useParams().year;
   const navigate = useNavigate();
 
-  function handleChange({ target: { value } }: SelectChangeEvent) {
-    
-  }
+  function handleChange({ target: { value } }: SelectChangeEvent) {}
 
   return (
     <>
       {months && months.length > 0 && (
-        <FormControl sx={{ display: "flex", width: "50%" }}>
-          <InputLabel>Month</InputLabel>
-          <Select label="month" onChange={handleChange} value={months[0]}>
-            {months.map((value, index) => {
-              return (
-                <MenuItem key={index} value={value} onClick={() => navigate(`/${currentYear}/${value}`)}>
-                  {value}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+        <Box
+          component={"section"}
+          sx={{
+            flex: 1,
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateRows: "repeat(4, 1fr)",
+            padding: ".5rem",
+            gap: ".5rem",
+          }}
+        >
+          {Object.keys(Month)
+            .filter((month) => months.includes(month))
+            .map((month, index) => (
+              <MonthDisplay
+                key={index}
+                month={month}
+                setIsMonthSelected={setIsMonthSelected}
+              />
+            ))}
+        </Box>
       )}
     </>
   );

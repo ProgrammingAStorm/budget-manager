@@ -1,6 +1,7 @@
 import type SubCategory from "../../../models/subCategory";
 import type Transaction from "../../../models/transaction";
 import { useAppSelector } from "../../../redux/hooks";
+import Details from "./Details";
 import { Transaction as TransactionComponent } from "./Transaction";
 
 export interface SubCategoryProps {
@@ -19,6 +20,10 @@ export default function SubCategory({ subCategoryId }: SubCategoryProps) {
     <div>
       {subCategory?.name}
 
+      <Details
+        transactions={getActualTransactions(transactionsBySubCategory)}
+      />
+
       {transactionsBySubCategory.map((transaction) => (
         <TransactionComponent key={transaction.id} transaction={transaction} />
       ))}
@@ -33,5 +38,9 @@ export default function SubCategory({ subCategoryId }: SubCategoryProps) {
     return transactions.filter(
       (transaction) => transaction.subCategory === subCategoryId
     );
+  }
+
+  function getActualTransactions(transactions: Transaction[]) {
+    return transactions.map(({ amount }) => amount);
   }
 }
