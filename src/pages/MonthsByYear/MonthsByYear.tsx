@@ -1,55 +1,35 @@
 import { useParams } from "react-router-dom";
-import Transaction from "../../models/transaction";
-import { useAppSelector } from "../../redux/hooks";
-import Category from "./components/Category";
-import Details from "./components/Details";
+import { Tab, Tabs } from "@mui/material";
+import { useState } from "react";
+import MonthDetailsPanel from "./panels/MonthDetailsPanel";
+import BudgetReportPanel from "./panels/BudgetReportPanel";
 
 export default function MonthByYear() {
-  const month = useParams().month!;
-  const categories = useAppSelector((s) => s.categories);
+  const month = useParams().month;
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const transactionsByMonthByYear = useAppSelector(({ transactions }) =>
-    getTransactionsByMonth(transactions)
-  );
-  const actualTransactionsByMonthByYear = getActualTransactions(
-    useAppSelector(({ transactions }) => getTransactionsByMonth(transactions))
-  );
-
-  const categoriesInMonth = getCategoriesFromTransactions(
-    transactionsByMonthByYear
-  );
+  const handleChange = (_: unknown, newValue: number) => {
+    setTabIndex(newValue);
+  };
 
   return (
     <>
-      {transactionsByMonthByYear && transactionsByMonthByYear.length > 0 && (
-        <>
-          <Details transactions={actualTransactionsByMonthByYear} />
-          {categoriesInMonth.map((categoryId) => (
-            <Category
-              key={categoryId}
-              category={
-                categories.find((category) => category.id == categoryId)!
-              }
-            />
-          ))}
-        </>
-      )}
+      <Tabs
+        value={tabIndex}
+        onChange={handleChange}
+        aria-label="Month Page Tabs"
+        component={"nav"}
+      >
+        <Tab label="Details" />
+        <Tab label="Budget Report" />
+      </Tabs>
+
+      {(() => {
+        return {
+          0: <MonthDetailsPanel month={month!} />,
+          1: <BudgetReportPanel />,
+        }[tabIndex];
+      })()}
     </>
   );
-
-  function getTransactionsByMonth(transactions: Transaction[]) {
-    return transactions.filter((transaction) => transaction.month === month);
-  }
-
-  function getCategoriesFromTransactions(transactions: Transaction[]) {
-    return transactions
-      .map((transaction) => transaction.category)
-      .filter(
-        (category, index, categories) => categories.indexOf(category) === index
-      );
-  }
-
-  function getActualTransactions(transactions: Transaction[]) {
-    return transactions.map(({ amount }) => amount);
-  }
 }

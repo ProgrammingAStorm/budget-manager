@@ -1,7 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { PostTransactionForm } from "../../components/AddTransactionComponent";
+
+const fetchTransactions = createAsyncThunk(
+  "transactions/fetchTransactionsByYear",
+  async () => {
+    const response = await fetch("http://localhost:3000/transactions");
+    return await response.json();
+  }
+);
+
 const fetchTransactionsByYear = createAsyncThunk(
-  "transactions/fetchTransactions",
+  "transactions/fetchTransactionsByYear",
   async (yearId: string) => {
     const response = await fetch(
       `http://localhost:3000/transactions?year=${yearId}`
@@ -20,7 +29,6 @@ const postTransaction = createAsyncThunk(
     subCategory,
     year,
   }: PostTransactionForm) => {
-    console.log(month);
     const request = {
       amount: amount!,
       category: category!.id,
@@ -40,4 +48,4 @@ const postTransaction = createAsyncThunk(
   }
 );
 
-export { fetchTransactionsByYear, postTransaction };
+export { fetchTransactions, fetchTransactionsByYear, postTransaction };

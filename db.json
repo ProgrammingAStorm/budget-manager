@@ -8,6 +8,15 @@
       "name": "Consumer Electric",
       "subCategory": "5951",
       "year": "d1f0"
+    },
+    {
+      "id": "83fa",
+      "amount": -123,
+      "category": "5f94",
+      "month": "March",
+      "name": "Consumer Electric",
+      "subCategory": "5951",
+      "year": "d1f0"
     }
   ],
   "years": [
@@ -24,7 +33,9 @@
     {
       "id": "5f94",
       "name": "Utilities",
-      "subCategories": ["5951"]
+      "subCategories": [
+        "5951"
+      ]
     }
   ],
   "subCategories": [
@@ -34,5 +45,26 @@
       "name": "Heating"
     }
   ],
-  "budgets": [{ "id": "1", "totalIncome": 0, "divisions": [] }]
+  "budgets": [
+    {
+      "id": "12d4",
+      "name": "budget",
+      "totalIncome": 123,
+      "divisions": [
+        {
+          "category": "5f94",
+          "percentage": 1,
+          "subCategory": "5f94",
+          "subDivisions": [
+            {
+              "category": "5f94",
+              "subCategory": "5951",
+              "percentage": 1,
+              "subDivions": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

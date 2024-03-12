@@ -4,9 +4,11 @@ import transactionsReducer from "./slices/transactionsSlice";
 import categoryReducer from "./slices/categorySlice";
 import subCategoryReducer from "./slices/subCategorySlice";
 import modalReducer from "./slices/modalSlice";
+import budgetReducer from "./slices/budgetSlice";
 
 export const store = configureStore({
   reducer: {
+    budgets: budgetReducer,
     years: yearsReducer,
     transactions: transactionsReducer,
     categories: categoryReducer,

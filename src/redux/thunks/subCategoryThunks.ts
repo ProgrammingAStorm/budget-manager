@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import SubCategory from "../../models/subCategory";
 import { putSubCategoryIntoCategory } from "./categoryThunks";
 
-const fetchSubCategories = createAsyncThunk<SubCategory[]>(
+const fetchSubCategories = createAsyncThunk(
   "subcategories/fetchSubCategories",
   async () => {
     const response = await fetch("http://localhost:3000/subCategories");

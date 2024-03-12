@@ -19,6 +19,7 @@
     "@mui/x-date-pickers": "^6.19.4",
     "@reduxjs/toolkit": "^2.1.0",
     "@types/react-redux": "^7.1.33",
+    "ienumerable": "^1.0.1",
     "json-server": "^1.0.0-alpha.23",
     "linq": "^4.0.2",
     "localforage": "^1.10.0",
