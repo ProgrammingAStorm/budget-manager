@@ -17,6 +17,8 @@ function generateBudget(
 ): Budget {
   const totalIncome = getTotalIncomeFromTransactions(transactions);
 
+  //TODO make it do the logic for withdrawls instead of all transactions
+
   const transactionsByCategories = getTransactionsByCategories(
     transactions,
     categories

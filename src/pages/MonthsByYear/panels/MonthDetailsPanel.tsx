@@ -23,7 +23,7 @@ export default function MonthDetailsPanel({ month }: MonthDetailsPanelProps) {
   );
 
   return (
-    <Panel>
+    <Panel display="block">
       {transactionsByMonthByYear && transactionsByMonthByYear.length > 0 && (
         <>
           <Details transactions={actualTransactionsByMonthByYear} />
@@ -33,6 +33,7 @@ export default function MonthDetailsPanel({ month }: MonthDetailsPanelProps) {
               category={
                 categories.find((category) => category.id == categoryId)!
               }
+              month={month}
             />
           ))}
         </>

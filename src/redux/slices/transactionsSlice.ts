@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Transaction from "../../models/transaction";
-import { fetchTransactionsByYear } from "../thunks/transactionThunks";
+import {
+  fetchTransactionsByYear,
+  postTransaction,
+} from "../thunks/transactionThunks";
 
 // Define the initial state using that type
 const initialState: Transaction[] = [];
@@ -15,6 +18,7 @@ export const transactionsSlice = createSlice({
       fetchTransactionsByYear.fulfilled,
       (_, { payload }) => payload
     );
+    //builder.addCase(postTransaction.fulfilled, (_, { payload }) => payload);
   },
 });
 

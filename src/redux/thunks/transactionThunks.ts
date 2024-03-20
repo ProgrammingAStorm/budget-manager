@@ -21,14 +21,10 @@ const fetchTransactionsByYear = createAsyncThunk(
 
 const postTransaction = createAsyncThunk(
   "transactions/postTransaction",
-  async ({
-    amount,
-    category,
-    month,
-    name,
-    subCategory,
-    year,
-  }: PostTransactionForm) => {
+  async (
+    { amount, category, month, name, subCategory, year }: PostTransactionForm,
+    { dispatch }
+  ) => {
     const request = {
       amount: amount!,
       category: category!.id,
@@ -45,6 +41,8 @@ const postTransaction = createAsyncThunk(
       method: "post",
       body: JSON.stringify(request),
     });
+
+    dispatch(fetchTransactions());
   }
 );
 

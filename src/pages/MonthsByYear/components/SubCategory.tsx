@@ -6,13 +6,17 @@ import { Transaction as TransactionComponent } from "./Transaction";
 
 export interface SubCategoryProps {
   subCategoryId: string;
+  month: string;
 }
 
-export default function SubCategory({ subCategoryId }: SubCategoryProps) {
+export default function SubCategory({
+  subCategoryId,
+  month,
+}: SubCategoryProps) {
   const subCategory = getCategoryById(
     useAppSelector(({ subCategories }) => subCategories)
   );
-  const transactionsBySubCategory = getTransactionsBySubCategory(
+  const transactionsBySubCategory = getTransactionsBySubCategoryByMonth(
     useAppSelector(({ transactions }) => transactions)
   );
 
@@ -34,9 +38,10 @@ export default function SubCategory({ subCategoryId }: SubCategoryProps) {
     return subCategories.find(({ id }) => id === subCategoryId);
   }
 
-  function getTransactionsBySubCategory(transactions: Transaction[]) {
+  function getTransactionsBySubCategoryByMonth(transactions: Transaction[]) {
     return transactions.filter(
-      (transaction) => transaction.subCategory === subCategoryId
+      (transaction) =>
+        transaction.subCategory === subCategoryId && transaction.month === month
     );
   }
 
