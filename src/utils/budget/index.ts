@@ -21,8 +21,7 @@ function generateBudget(
     Enumerable.IEnumerable<string>
   >
 ): Budget {
-  //TODO make it do the logic for withdrawls instead of all transactions
-
+  console.log(totalIncome);
   const withdrawlsByCategories = getTransactionsByCategories(
     withdrawls,
     categories
@@ -32,24 +31,24 @@ function generateBudget(
     subCategories
   );
 
-  const averageSpendingByCategories = getAverageSpendingByCategories(
+  const totalSpendingByCategories = getTotalSpendingByCategories(
     withdrawlsByCategories,
     categories
   );
   const percentageOfSpendingByCategories = getPercentageOfSpendingByCategories(
     categories,
-    averageSpendingByCategories,
+    totalSpendingByCategories,
     totalIncome
   );
 
-  const averageSpendingBySubCategory = getAverageSpendingBySubCategory(
+  const totalSpendingBySubCategory = getTotalSpendingBySubCategory(
     subCategories,
     withdrawlsBySubCategories
   );
   const percentageOfSpendingBySubCategories =
     getPercentageOfSpendingBySubCategories(
       subCategories,
-      averageSpendingBySubCategory,
+      totalSpendingBySubCategory,
       totalIncome
     );
 
@@ -67,6 +66,7 @@ function generateBudget(
   } as unknown as Budget;
 }
 
+//move all of these to their respective utility files
 function getTotalIncomeFromTransactions(
   transactions: Enumerable.IEnumerable<Transaction>
 ): number {
@@ -76,7 +76,7 @@ function getTotalIncomeFromTransactions(
     .sum();
 }
 
-function getAverageSpendingByCategories(
+function getTotalSpendingByCategories(
   transactionsByCategories: Enumerable.IDictionary<
     string,
     Enumerable.IEnumerable<Transaction>
@@ -86,16 +86,11 @@ function getAverageSpendingByCategories(
   return categories.toDictionary(
     (category) => category,
     (category) => {
-      const transactionsByCategory = transactionsByCategories.get(category);
-
-      const totalExpendatures = transactionsByCategory.where(
-        (transaction) => transaction.amount < 0
-      );
-      const totalSpending = totalExpendatures
+      return transactionsByCategories
+        .get(category)
+        .where((transaction) => transaction.amount < 0)
         .select((transaction) => transaction.amount)
         .sum();
-
-      return totalSpending / totalExpendatures.toArray().length;
     }
   );
 }
@@ -175,7 +170,7 @@ function getTransactionsBySubCategories(
   );
 }
 
-function getAverageSpendingBySubCategory(
+function getTotalSpendingBySubCategory(
   subCategories: Enumerable.IEnumerable<string>,
   transactionsBySubCategories: Enumerable.IDictionary<
     string,
@@ -185,17 +180,11 @@ function getAverageSpendingBySubCategory(
   return subCategories.toDictionary(
     (subCategory) => subCategory,
     (subCategory) => {
-      const transactionsBySubCategory =
-        transactionsBySubCategories.get(subCategory);
-
-      const totalExpendatures = transactionsBySubCategory.where(
-        (transaction) => transaction.amount < 0
-      );
-      const totalSpending = totalExpendatures
+      return transactionsBySubCategories
+        .get(subCategory)
+        .where((transaction) => transaction.amount < 0)
         .select((transaction) => transaction.amount)
         .sum();
-
-      return totalSpending / totalExpendatures.toArray().length;
     }
   );
 }

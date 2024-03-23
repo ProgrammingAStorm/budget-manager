@@ -1795,51 +1795,51 @@
   ],
   "budgets": [
     {
-      "id": "cde8",
+      "id": "6503",
       "name": "budget",
       "totalIncome": 57600,
       "divisions": [
         {
           "category": "5d97",
-          "percentage": 0.022569444444444444,
+          "percentage": 0.5416666666666666,
           "subCategory": "5d97",
           "subDivisions": [
             {
               "category": "5d97",
               "subCategory": "cebf",
-              "percentage": 0.022569444444444444,
+              "percentage": 0.5416666666666666,
               "subDivions": []
             }
           ]
         },
         {
           "category": "5c4d",
-          "percentage": 0.005208333333333333,
+          "percentage": 0.125,
           "subCategory": "5c4d",
           "subDivisions": [
             {
               "category": "5c4d",
               "subCategory": "27ab",
-              "percentage": 0.005208333333333333,
+              "percentage": 0.125,
               "subDivions": []
             }
           ]
         },
         {
           "category": "5f94",
-          "percentage": 0.00078125,
+          "percentage": 0.03671875,
           "subCategory": "5f94",
           "subDivisions": [
             {
               "category": "5f94",
               "subCategory": "5951",
-              "percentage": 0.00078125,
+              "percentage": 0.01875,
               "subDivions": []
             },
             {
               "category": "5f94",
               "subCategory": "5ffc",
-              "percentage": 0.00078125,
+              "percentage": 0.01796875,
               "subDivions": []
             }
           ]
