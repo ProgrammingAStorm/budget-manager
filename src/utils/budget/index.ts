@@ -1,13 +1,19 @@
 import Budget from "../../models/budget";
 import Transaction from "../../models/transaction";
 import Enumerable from "linq";
-import { getTransactionsByCategories } from "../transactions";
-//import { store } from "../../redux/store";
+import {
+  getTransactionsByCategories,
+  getWithdrawlsFromTransactions,
+} from "../transactions";
 import Division from "../../models/division";
+import { getCategoriesFromTransactions } from "../categories";
+import { RootState } from "../../redux/store";
+import { getSubCategoriesFromTransactions } from "../subCategories";
 
 function generateBudget(
   name: string,
-  transactions: Enumerable.IEnumerable<Transaction>,
+  totalIncome: number,
+  withdrawls: Enumerable.IEnumerable<Transaction>,
   categories: Enumerable.IEnumerable<string>,
   subCategories: Enumerable.IEnumerable<string>,
   subCategoriesByCategory: Enumerable.IDictionary<
@@ -15,21 +21,19 @@ function generateBudget(
     Enumerable.IEnumerable<string>
   >
 ): Budget {
-  const totalIncome = getTotalIncomeFromTransactions(transactions);
-
   //TODO make it do the logic for withdrawls instead of all transactions
 
-  const transactionsByCategories = getTransactionsByCategories(
-    transactions,
+  const withdrawlsByCategories = getTransactionsByCategories(
+    withdrawls,
     categories
   );
-  const transactionsBySubCategories = getTransactionsBySubCategories(
-    transactions,
+  const withdrawlsBySubCategories = getTransactionsBySubCategories(
+    withdrawls,
     subCategories
   );
 
   const averageSpendingByCategories = getAverageSpendingByCategories(
-    transactionsByCategories,
+    withdrawlsByCategories,
     categories
   );
   const percentageOfSpendingByCategories = getPercentageOfSpendingByCategories(
@@ -40,7 +44,7 @@ function generateBudget(
 
   const averageSpendingBySubCategory = getAverageSpendingBySubCategory(
     subCategories,
-    transactionsBySubCategories
+    withdrawlsBySubCategories
   );
   const percentageOfSpendingBySubCategories =
     getPercentageOfSpendingBySubCategories(
@@ -59,7 +63,7 @@ function generateBudget(
   return {
     name,
     totalIncome,
-    divisions: divisions,
+    divisions,
   } as unknown as Budget;
 }
 
@@ -118,6 +122,11 @@ function generateDivisions(
   percentageOfSpendingBySubCategories: Enumerable.IDictionary<string, number>
 ): Division[] {
   return categories
+    .where(
+      (category) =>
+        percentageOfSpendingByCategories.get(category) !== null ||
+        !isNaN(percentageOfSpendingByCategories.get(category))
+    )
     .select((category) => {
       const subCategories = subCategoriesByCategory.get(category);
       const percentage = percentageOfSpendingByCategories.get(category);
@@ -203,4 +212,36 @@ function getPercentageOfSpendingBySubCategories(
   );
 }
 
-export { generateBudget };
+function prepareDataForBudgetGeneration(store: RootState) {
+  const transactions = Enumerable.from<Transaction>(store.transactions);
+  const withdrawls = getWithdrawlsFromTransactions(transactions);
+  const categories = getCategoriesFromTransactions(withdrawls);
+  const subCategories = getSubCategoriesFromTransactions(withdrawls);
+
+  const totalIncome = getTotalIncomeFromTransactions(transactions);
+  const subCategoriesByCategory = getSubCategoriesByCategory(categories);
+
+  return {
+    totalIncome,
+    withdrawls,
+    categories,
+    subCategories,
+    subCategoriesByCategory,
+  };
+
+  function getSubCategoriesByCategory(
+    categories: Enumerable.IEnumerable<string>
+  ) {
+    const subCategories = Enumerable.from(store.subCategories);
+
+    return categories.toDictionary(
+      (category) => category,
+      (category) =>
+        subCategories
+          .where((subCategories) => subCategories.parentCategory === category)
+          .select((subCategory) => subCategory.id)
+    );
+  }
+}
+
+export { generateBudget, prepareDataForBudgetGeneration };

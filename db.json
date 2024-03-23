@@ -1795,64 +1795,51 @@
   ],
   "budgets": [
     {
-      "id": "6da4",
+      "id": "cde8",
       "name": "budget",
-      "totalIncome": 28800,
+      "totalIncome": 57600,
       "divisions": [
         {
           "category": "5d97",
-          "percentage": 0.04513888888888889,
+          "percentage": 0.022569444444444444,
           "subCategory": "5d97",
           "subDivisions": [
             {
               "category": "5d97",
               "subCategory": "cebf",
-              "percentage": 0.04513888888888889,
-              "subDivions": []
-            }
-          ]
-        },
-        {
-          "category": "cd49",
-          "percentage": null,
-          "subCategory": "cd49",
-          "subDivisions": [
-            {
-              "category": "cd49",
-              "subCategory": "32ae",
-              "percentage": null,
+              "percentage": 0.022569444444444444,
               "subDivions": []
             }
           ]
         },
         {
           "category": "5c4d",
-          "percentage": 0.010416666666666666,
+          "percentage": 0.005208333333333333,
           "subCategory": "5c4d",
           "subDivisions": [
             {
               "category": "5c4d",
               "subCategory": "27ab",
-              "percentage": 0.010416666666666666,
+              "percentage": 0.005208333333333333,
               "subDivions": []
             }
           ]
         },
         {
           "category": "5f94",
-          "percentage": 0.0015625,
+          "percentage": 0.00078125,
           "subCategory": "5f94",
           "subDivisions": [
             {
               "category": "5f94",
               "subCategory": "5951",
-              "percentage": 0.0015625,
+              "percentage": 0.00078125,
               "subDivions": []
             },
             {
               "category": "5f94",
               "subCategory": "5ffc",
-              "percentage": 0.0015625,
+              "percentage": 0.00078125,
               "subDivions": []
             }
           ]

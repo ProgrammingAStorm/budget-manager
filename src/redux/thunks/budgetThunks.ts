@@ -1,10 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { generateBudget } from "../../utils/budget";
-import Enumberable from "linq";
-import Transaction from "../../models/transaction";
-import { getCategoriesFromTransactions } from "../../utils/categories";
-import Enumerable from "linq";
+import {
+  generateBudget,
+  prepareDataForBudgetGeneration,
+} from "../../utils/budget";
 
 const fetchBudgets = createAsyncThunk("budgets/fetchBudgets", async () => {
   const response = await fetch(`http://localhost:3000/budgets`);
@@ -16,14 +15,18 @@ const generateBudgetFromTransactions = createAsyncThunk(
   async (_, { getState, dispatch }) => {
     const store = getState() as RootState;
 
-    const transactions = Enumberable.from<Transaction>(store.transactions);
-    const categories = getCategoriesFromTransactions(transactions);
-    const subCategories = getSubCategoriesFromCategories(categories);
-    const subCategoriesByCategory = getSubCategoriesByCategory(categories);
+    const {
+      totalIncome,
+      withdrawls,
+      categories,
+      subCategories,
+      subCategoriesByCategory,
+    } = prepareDataForBudgetGeneration(store);
 
     const budget = generateBudget(
       "budget",
-      transactions,
+      totalIncome,
+      withdrawls,
       categories,
       subCategories,
       subCategoriesByCategory
@@ -38,33 +41,6 @@ const generateBudgetFromTransactions = createAsyncThunk(
     });
 
     dispatch(fetchBudgets());
-
-    function getSubCategoriesFromCategories(
-      categories: Enumerable.IEnumerable<string>
-    ) {
-      const subCategories = Enumerable.from(store.subCategories);
-
-      return subCategories
-        .where((subCategory) =>
-          categories.any((category) => category === subCategory.parentCategory)
-        )
-        .select((subCategory) => subCategory.id)
-        .flatten() as Enumerable.IEnumerable<string>;
-    }
-
-    function getSubCategoriesByCategory(
-      categories: Enumerable.IEnumerable<string>
-    ) {
-      const subCategories = Enumerable.from(store.subCategories);
-
-      return categories.toDictionary(
-        (category) => category,
-        (category) =>
-          subCategories
-            .where((subCategories) => subCategories.parentCategory === category)
-            .select((subCategory) => subCategory.id)
-      );
-    }
   }
 );
 

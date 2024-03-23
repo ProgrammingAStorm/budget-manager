@@ -12,4 +12,10 @@ function getTransactionsByCategories(
   );
 }
 
-export { getTransactionsByCategories };
+function getWithdrawlsFromTransactions(
+  transactions: Enumberable.IEnumerable<Transaction>
+) {
+  return transactions.where(({ amount }) => amount < 0);
+}
+
+export { getTransactionsByCategories, getWithdrawlsFromTransactions };
