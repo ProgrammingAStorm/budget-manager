@@ -1,8 +1,9 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-//import { selectBudgets } from "../../../redux/slices/budgetSlice";
 import Panel from "../components/Panel";
 import { generateBudgetFromTransactions } from "../../../redux/thunks/budgetThunks";
+import { PieChart } from "@mui/x-charts";
+import { getPieChartParamsFromBudget } from "../../../utils/chart";
 
 export default function BudgetReportPanel() {
   const budgets = useAppSelector((s) => s.budgets);
@@ -61,7 +62,31 @@ export default function BudgetReportPanel() {
 
   return (
     <Panel display="block">
-      <div></div>
+      <Typography variant="h1" textAlign={"center"} marginBlock={"1.25rem"}>
+        Budget
+      </Typography>
+      <PieChart {...getPieChartParamsFromBudget(budgets[0])} />
     </Panel>
   );
 }
+
+// const barChartsParams = {
+//   xAxis: [
+//     {
+//       data: ['page A', 'page B', 'page C', 'page D', 'page E'],
+//       scaleType: 'band' as const,
+//     },
+//   ],
+//   series: [
+//     { data: [2, 5, 3, 4, 1], stack: '1', label: 'Series x' },
+//     { data: [10, 3, 1, 2, 10], stack: '1', label: 'Series y' },
+//     { data: [10, 3, 1, 2, 10], stack: '1', label: 'Series z' },
+//   ],
+//   margin: { top: 10, right: 10 },
+//   height: 200,
+//   slotProps: {
+//     legend: {
+//       hidden: true,
+//     },
+//   },
+// };

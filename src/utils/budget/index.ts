@@ -21,7 +21,6 @@ function generateBudget(
     Enumerable.IEnumerable<string>
   >
 ): Budget {
-  console.log(totalIncome);
   const withdrawlsByCategories = getTransactionsByCategories(
     withdrawls,
     categories
@@ -65,7 +64,6 @@ function generateBudget(
     divisions,
   } as unknown as Budget;
 }
-
 //move all of these to their respective utility files
 function getTotalIncomeFromTransactions(
   transactions: Enumerable.IEnumerable<Transaction>

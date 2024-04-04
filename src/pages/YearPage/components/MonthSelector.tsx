@@ -1,12 +1,4 @@
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { Box } from "@mui/material";
 import Month from "../../../models/month";
 import MonthDisplay from "./MonthDisplay";
 
@@ -17,11 +9,6 @@ export default function MonthSelector({
   months: string[];
   setIsMonthSelected: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const currentYear = useParams().year;
-  const navigate = useNavigate();
-
-  function handleChange({ target: { value } }: SelectChangeEvent) {}
-
   return (
     <>
       {months && months.length > 0 && (
