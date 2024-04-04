@@ -14,7 +14,7 @@ export default function MonthByYear() {
 
   return (
     <>
-      <Tabs
+      {/* <Tabs
         value={tabIndex}
         onChange={handleChange}
         aria-label="Month Page Tabs"
@@ -22,7 +22,7 @@ export default function MonthByYear() {
       >
         <Tab label="Details" />
         <Tab label="Budget Report" />
-      </Tabs>
+      </Tabs> */}
 
       {(() => {
         return {
