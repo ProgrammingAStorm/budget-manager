@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { useNavigate } from "react-router-dom";
 import { fetchTransactionsByYear } from "../redux/thunks/transactionThunks";
@@ -22,7 +16,7 @@ export default function YearSelector() {
   function handleClick({ id, value }: Year) {
     dispatch(fetchTransactionsByYear(id));
     setSelectedMonth(value);
-    navigate(`/${value}`);
+    navigate(`year/${value}`);
   }
 
   return (

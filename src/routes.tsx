@@ -9,14 +9,16 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/:year",
+        path: "year/:year",
         element: <YearPage />,
-        children: [
-          {
-            path: "/:year/:month",
-            element: <MonthByYear />,
-          },
-        ],
+      },
+      {
+        path: "/month/:month/year/:year",
+        element: <MonthByYear />,
+      },
+      {
+        path: "*",
+        element: <div>404</div>,
       },
     ],
   },

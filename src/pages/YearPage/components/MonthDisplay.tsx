@@ -27,7 +27,7 @@ export default function MonthDisplay({
   }
 
   function handleSubmit() {
-    navigate(`/${year}/${month}`);
+    navigate(`/month/${month}/year/${year}`);
     setIsMonthSelected(true);
   }
 
