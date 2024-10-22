@@ -1,0 +1,54 @@
+{
+  "transactions": [
+    {
+      "id": "1",
+      "value": 40,
+      "categoryId": "1",
+      "name": "",
+      "comment": "",
+      "timestamp": "07-11-2002"
+    },
+    {
+      "id": "2",
+      "value": 30,
+      "categoryId": "1",
+      "name": "",
+      "comment": "",
+      "timestamp": "07-11-2002"
+    },
+    {
+      "id": "3",
+      "value": 25,
+      "categoryId": "1",
+      "name": "",
+      "comment": "",
+      "timestamp": "07-11-2002"
+    },
+    {
+      "id": "4",
+      "value": 1350,
+      "categoryId": "2",
+      "name": "",
+      "comment": "",
+      "timestamp": "07-11-2002"
+    },
+    {
+      "id": "5",
+      "value": 1350,
+      "categoryId": "2",
+      "name": "",
+      "comment": "",
+      "timestamp": "07-11-2002"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Utilities"
+    },
+    {
+      "id": "2",
+      "name": "Rent"
+    }
+  ]
+}
