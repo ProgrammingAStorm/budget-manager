@@ -17,9 +17,16 @@ export default async function Home() {
 }
 
 function MapToCategories({ category, transactions }: TransactionsByCategory) {
+  const transactionTotal = transactions
+    .map((transaction) => transaction.value)
+    .reduce((prev, cur) => prev + cur);
+
   return (
     <section key={category.id} className="mt-10">
-      <h2>{category.name}</h2>
+      <h2 className="flex justify-between">
+        <span>{category.name}</span>{" "}
+        <span>{"$" + transactionTotal.toLocaleString()}</span>
+      </h2>
 
       <Table
         source={transactions}
