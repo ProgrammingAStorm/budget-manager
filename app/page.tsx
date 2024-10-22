@@ -7,10 +7,11 @@ import { GetTransactionsByCategories } from "@/repo";
 export default async function Home() {
   const transactionsByCategory = await GetTransactionsByCategories();
 
-  const total: number = transactionsByCategory
+  const total: string = transactionsByCategory
     .flatMap(({ transactions }) => transactions)
     .map((transaction) => transaction.value)
-    .reduce((prev, cur) => prev + cur);
+    .reduce((prev, cur) => prev + cur)
+    .toLocaleString();
 
   return (
     <main className="w-full min-h-screen grid place-items-center ">
