@@ -28,7 +28,7 @@ export default async function Table<T>({
     <table>
       <thead>
         <tr>
-          <th>#</th>
+          <th className="pr-3">#</th>
           {headers.map(ToHeader)}
         </tr>
       </thead>
@@ -39,7 +39,11 @@ export default async function Table<T>({
 }
 
 function ToHeader(header: string, index: number) {
-  return <th key={index}>{header}</th>;
+  return (
+    <th key={index} className="pr-3 last:pr-0">
+      {header}
+    </th>
+  );
 }
 
 function DataToRow(data: string[], index: number) {

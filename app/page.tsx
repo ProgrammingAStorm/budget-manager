@@ -22,7 +22,10 @@ function MapToCategories({ category, transactions }: TransactionsByCategory) {
     .reduce((prev, cur) => prev + cur);
 
   return (
-    <section key={category.id} className="mt-10">
+    <section
+      key={category.id}
+      className="p-4 shadow-md rounded-md bg-white max-w-full"
+    >
       <h2 className="flex justify-between">
         <span>{category.name}</span>{" "}
         <span>{"$" + transactionTotal.toLocaleString()}</span>

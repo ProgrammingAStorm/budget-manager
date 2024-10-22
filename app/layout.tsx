@@ -13,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="grid place-items-center">{children}</body>
+      <body className="grid place-items-center bg-gradient-to-tl from-cyan-900 via-cyan-600 to-cyan-200 min-h-screen w-svw">
+        {children}
+      </body>
     </html>
   );
 }
