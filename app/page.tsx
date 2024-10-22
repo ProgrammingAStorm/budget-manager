@@ -18,7 +18,7 @@ export default async function Home() {
 
 function MapToCategories({ category, transactions }: TransactionsByCategory) {
   return (
-    <section key={category.id}>
+    <section key={category.id} className="mt-10">
       <h2>{category.name}</h2>
 
       <Table
