@@ -4,6 +4,7 @@ const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-onboarding",
@@ -16,5 +17,6 @@ const config: StorybookConfig = {
     name: "@storybook/nextjs",
     options: {},
   },
+  features: { experimentalRSC: true },
 };
 export default config;
