@@ -9,7 +9,8 @@
     "lint": "next lint",
     "server": "npx json-server -p 3001 db.json",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_78896cf0c9df6e9"
   },
   "dependencies": {
     "json-server": "^1.0.0-beta.2",
@@ -18,7 +19,6 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.2",
     "@storybook/addon-essentials": "^8.4.4",
     "@storybook/addon-interactions": "^8.4.4",
     "@storybook/addon-links": "^8.4.4",
@@ -29,6 +29,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "chromatic": "^11.18.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.9",
     "eslint-plugin-storybook": "^0.11.1",
