@@ -7,7 +7,7 @@ interface ITableProps<T> {
   source: T[];
   dataSelector: DataSelector<T>;
   headers: string[];
-  showIndices: boolean;
+  showIndices?: boolean;
 }
 
 type DataSelector<T> = {
