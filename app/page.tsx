@@ -45,7 +45,7 @@ function MapToCategoryDisplays({
 
       <Table
         source={transactions}
-        headerSelector={() => ["Name", "Value", "Comment", "Timestamp"]}
+        headers={["Name", "Value", "Comment", "Timestamp"]}
         dataSelector={(transaction) => [
           transaction.name,
           "$" + transaction.value.toLocaleString(),
