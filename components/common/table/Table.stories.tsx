@@ -4,6 +4,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Table from ".";
 import IdentityWise from "@/models/decorators/identityWise";
 import { Transaction } from "@/models/transaction";
+import { expect, waitFor, within } from "@storybook/test";
 
 const meta: Meta<typeof Table> = {
   component: Table,
@@ -27,6 +28,39 @@ interface Person extends IdentityWise {
 type PersonStory = TableStory<Person>;
 
 export const Basic: PersonStory = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await waitFor(async () =>
+      expect(await canvas.findAllByRole("table-cell")).toHaveLength(32)
+    );
+
+    await waitFor(async () =>
+      expect(
+        (
+          await canvas.findAllByRole("table-cell")
+        ).filter((element) => element.textContent)
+      ).toHaveLength(32)
+    );
+
+    await waitFor(async () =>
+      (
+        await canvas.findAllByRole("table-row-index")
+      ).forEach((indexElement, index) =>
+        expect(indexElement.textContent).toEqual((++index).toString())
+      )
+    );
+
+    await waitFor(async () =>
+      expect(await canvas.findByRole("table-index-header")).toHaveTextContent(
+        "#"
+      )
+    );
+
+    await waitFor(async () =>
+      expect(await canvas.findAllByRole("table-column-header")).toHaveLength(4)
+    );
+  },
   args: {
     source: [
       {
@@ -115,6 +149,29 @@ export const Basic: PersonStory = {
 type TransactionStory = TableStory<Transaction>;
 
 export const WithTransactions: TransactionStory = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await waitFor(async () =>
+      expect(canvas.queryByRole("table-row-index")).toBeNull()
+    );
+
+    await waitFor(async () =>
+      expect(canvas.queryByRole("table-index-header")).toBeNull()
+    );
+
+    await waitFor(async () =>
+      expect(await canvas.findAllByRole("table-cell")).toHaveLength(20)
+    );
+
+    await waitFor(async () =>
+      expect(
+        (
+          await canvas.findAllByRole("table-cell")
+        ).filter((element) => element.textContent)
+      ).toHaveLength(10)
+    );
+  },
   args: {
     source: [
       {
@@ -165,6 +222,7 @@ export const WithTransactions: TransactionStory = {
       transaction.timestamp.toLocaleDateString(),
     ],
     headers: ["Name", "Value", "Comment", "Timestamp"],
+    showIndices: false,
   },
   argTypes: {
     dataSelector: {
@@ -189,6 +247,13 @@ export const WithTransactions: TransactionStory = {
 type EmptyStory = TableStory<never>;
 
 export const Empty: EmptyStory = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await waitFor(async () =>
+      expect(canvas.queryByRole("table-cell")).toBeNull()
+    );
+  },
   args: {
     source: [],
     dataSelector: () => ["something"],

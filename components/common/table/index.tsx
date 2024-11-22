@@ -31,7 +31,11 @@ export default async function Table<T extends IdentityWise>({
     <table>
       <thead>
         <tr>
-          {showIndices && <th className="pr-3">#</th>}
+          {showIndices && (
+            <th className="pr-3" role="table-index-header">
+              #
+            </th>
+          )}
           {headers.map(toHeader)}
         </tr>
       </thead>
@@ -49,7 +53,7 @@ export default async function Table<T extends IdentityWise>({
 
   function toHeader(header: string, index: number) {
     return (
-      <th key={index} className="pr-3 last:pr-0">
+      <th role="table-column-header" key={index} className="pr-3 last:pr-0">
         {header}
       </th>
     );
@@ -58,10 +62,12 @@ export default async function Table<T extends IdentityWise>({
   function dataToRow(showIndices: boolean) {
     return function Row({ id, rowItems }: TableRow, index: number) {
       return (
-        <tr key={id}>
-          {showIndices && <td>{index + 1}</td>}
+        <tr key={id} role="table-row">
+          {showIndices && <td role="table-row-index">{index + 1}</td>}
           {rowItems.map((item, index) => (
-            <td key={index}>{item}</td>
+            <td key={index} role="table-cell">
+              {item}
+            </td>
           ))}
         </tr>
       );
